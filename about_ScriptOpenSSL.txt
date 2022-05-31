@@ -1,0 +1,18 @@
+With the scripts an OpenSSL CA can be configured and certificates can be issued.
+The scripts and configuration files are based on the following blog post and github repository:
+	- https://pki-tutorial-ng.readthedocs.io/en/latest/advanced/index.html#advanced-pki
+	- https://github.com/mrwiora/pki-example-2
+	
+The scripts are written for a Linux environment and developt on a Synology Diskstation DS920+ (bash version: 4.4.23(1)-release).
+A detailed documentation can be found in the doc folder.
+
+Configuration and requesting certificates, with the script, in a nutshell.
+	- Copy the files and directory structure to an install folder
+	- Create a root directory for the two-tiered CA
+	- Run the script createCAconf.sh from the install folder
+	- Collect the necessary configuration data with the script (the script asks you numerous questions)
+	- Prepare strong pass phrases for the keys of the root and signing CA
+	- Start the CA configuration with the script int-ca.sh
+	- The following script are started from scripts directory of the CA installation. <caRootDir> is the directory created after copying the file and directory structure.
+		- To create a certificate trust chain, run the script createTrustChain.sh from /<caRootDir>/scripts
+		- To issue certificates, launch the script request-certificate from /<caRootDir>/scripts
